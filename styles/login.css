@@ -4,6 +4,7 @@
   --clr-backfill: #EAE7DC;
   --clr-text: white;
   --clr-background: #18181b;
+  --clr-link: black;
 }
 body {
   background-color: var(--clr-backfill);
@@ -58,23 +59,7 @@ main{
       }
       
     }
-    /*
-    .login-form label {
-        display: block;
-        text-align: left;
-        margin: 10px 0;
-      }
-
-      /*
-    .login-form{
-        margin-left: 30px;
-        text-align: center;
-        background-color: white;
-        width: 600px;
-        height: 50%;
-        border-radius: 30px;
-    }
-    */
+    
 
 .login-form {
     background: var(--clr-background);
@@ -105,6 +90,7 @@ main{
   }
   
   .input-group input {
+    color: var(--clr-text);
     width: calc(100% - 20px); /* Input width taking padding into account */
     padding: 10px;
     border-radius: 10px;
@@ -118,13 +104,12 @@ main{
     border: none;
   }
   
-  /* Add some styles to your button to match your design */
   button {
     border: none;
     padding: 10px 20px;
     border-radius: 10px;
-    background-color: #d2a679; /* Your button color */
-    color: #000000; /* Button text color */
+    background-color: #d2a679; 
+    color: var(--clr-link); 
     text-transform: uppercase;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -134,7 +119,7 @@ main{
     background-color: #b98c5d; /* Darken the button color on hover */
   }
   
-  /* Ensure the form elements are not out of the div box */
+  
   form {
     display: flex;
     flex-direction: column;

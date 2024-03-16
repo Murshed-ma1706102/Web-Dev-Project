@@ -4,11 +4,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const storeUserInStorage = (user) => {
     const currentUser = user;
     localStorage.setItem("currentUser", currentUser); // Store in local storage to know which user is logged in
+    console.log("user logged in successfully")
   };
 
   const sign_in = async () => {
     try {
-      fetch("./users.json")
+      fetch("./scripts/users.json")
         .then((response) => {
           return response.json();
         })
