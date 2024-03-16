@@ -1,0 +1,107 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+main{
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #EAE7DC;
+    height: 100vh;
+
+    img{
+        width: 300px;
+        height: 300px;
+    }
+    /*
+    .login-form label {
+        display: block;
+        text-align: left;
+        margin: 10px 0;
+      }
+
+      /*
+    .login-form{
+        margin-left: 30px;
+        text-align: center;
+        background-color: white;
+        width: 600px;
+        height: 50%;
+        border-radius: 30px;
+    }
+    */
+}
+
+header{
+    background-color: #0B0C10;
+    color: white;
+    text-align: center;
+    font-size: 3.5em;
+}
+
+.login-form {
+    background: #000000;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    color: white;
+    width: 600px; /* Adjust as needed */
+    margin-left: 100px;
+    text-align: center;
+  }
+  
+  .login-form h2 {
+    margin-bottom: 30px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input {
+    width: calc(100% - 20px); /* Input width taking padding into account */
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for the input fields to have a gradient or some effect like in the image */
+  .input-group input {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+  }
+  
+  /* Add some styles to your button to match your design */
+  button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #d2a679; /* Your button color */
+    color: #000000; /* Button text color */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #b98c5d; /* Darken the button color on hover */
+  }
+  
+  /* Ensure the form elements are not out of the div box */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
