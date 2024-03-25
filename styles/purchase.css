@@ -1,0 +1,158 @@
+@import url(reset.css);
+
+:root {
+    --clr-backfill: #EAE7DC;
+    --clr-text: black;
+    --clr-background: #18181b;
+    --clr-link: black;
+  }
+  body {
+    background-color: var(--clr-backfill);
+    color: var(--clr-text);
+    font-family: 'Cairo', sans-serif;
+    transition: all ease 250ms;
+  }
+  
+  h1, h2, h3 {
+    font-family: "Noto Serif", serif;
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+  
+  header{
+      margin: 1.25em;
+      color: black;
+      padding: 12px;
+  }
+  @media screen and (max-width: 959px) {
+    
+    header {
+      display: flex;
+      justify-content: center;
+    }
+  }
+  header div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: center;
+      width: fit-content;
+  }
+  header h1 {
+    font-size: 2.5em;
+  }
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #c9c2a5;
+    border-radius: 20px;
+    width: fit-content;
+    height: 300px;
+    margin: 2em auto 0;
+    overflow: hidden;
+}
+.hide {
+    display: none;
+}
+.card img {
+    height: 167px;
+    width: 250px;
+}
+.card p {
+    font-weight: bold;
+}
+
+.card .quantityDiv {
+    padding: 10px;
+    background-color: whitesmoke;
+    border-radius: 20px;
+}
+.card .quantityDiv img {
+    height: 12px;
+    width: 15px;
+    cursor: pointer;
+}
+.quantityDiv span {
+    margin: 0 3px;
+}
+form div {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5em auto;
+    width: fit-content;
+}
+
+form div input {
+    margin-top: 5px;
+    width: 225px;
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+main .button {
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.button button {
+    outline: none;
+    border: none;
+    padding: 20px;
+    border-radius: 27px;
+    background-color: #d2a679;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button button:hover {
+    background-color: #b98c5d;
+}
+
+.popup {
+    text-align: center;
+    background-color: #c9c2a5;
+    border-radius: 20px;
+    width: 350px;
+    height: 250px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    padding: 5px 25px;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s; 
+}
+.popup img {
+    width: 85px;
+}
+.popup h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+.popup button {
+    margin-top: 20px;
+    padding: 7px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--clr-background);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.open {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+

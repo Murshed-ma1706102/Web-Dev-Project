@@ -2,11 +2,15 @@
     {
         "userId": 1,
         "username": "user1",
-        "password": "password1"
+        "password": "password1",
+        "type": "customer",
+        "balance": 500
+        
     },
     {
        "userId": 2,
        "username": "user2",
-       "password": "password2"
+       "password": "password2",
+       "type": "seller"
     }
 ]

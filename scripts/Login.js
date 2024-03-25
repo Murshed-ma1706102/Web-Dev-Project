@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const storeUserInStorage = (user) => {
     const currentUser = user;
     localStorage.setItem("currentUser", currentUser); // Store in local storage to know which user is logged in
-    console.log("user logged in successfully")
   };
 
   const sign_in = async () => {
@@ -23,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           if (user) {
             storeUserInStorage(JSON.stringify(user));
-            window.location.href = "../Main_Page/mainPage.html";
+            window.location.href = "mainPage.html";
           } else {
             alert("Invalid username or password");
           }

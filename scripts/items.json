@@ -1,0 +1,32 @@
+[{
+    "itemId": 1, 
+    "type": "shirt",
+    "price": 30,
+    "sellerId": 2,
+    "quantity": 10,
+    "src": "./media/imgs/shirts/shirt-1.avif",
+    "describtion": "black t-shirt"
+},
+
+{
+    "itemId": 2, 
+    "type": "shirt",
+    "price": 50,
+    "sellerId": 2,
+    "quantity": 10,
+    "src": "./media/imgs/shirts/white-shirt.avif",
+    "describtion": "white t-shirt"
+},
+{
+    "itemId": 3, 
+    "type": "shirt",
+    "price": 40,
+    "sellerId": 2,
+    "quantity": 10,
+    "src": "./media/imgs/shirts/shirt-3.avif",
+    "describtion": "black t-shirt with writing"
+}
+    
+]
+
+
