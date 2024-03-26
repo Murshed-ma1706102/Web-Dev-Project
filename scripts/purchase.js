@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
      popup.appendChild(p);
      popup.appendChild(btn);
 
-
+     
      btn.addEventListener("click", (e) => {
         window.location.href = "mainPage.html";
      })

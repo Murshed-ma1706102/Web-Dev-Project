@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-const currentUser= JSON.parse(localStorage.getItem("currentUser"))
+const currentUser= JSON.parse(localStorage.getItem("currentUser"));
 if(currentUser) {
     const loginBtn = document.querySelector(".login");
     loginBtn.style.display = "none";
@@ -12,6 +12,7 @@ const jsonItems = localStorage.getItem("items");
 let items = jsonItems ? JSON.parse(jsonItems):[];
 
 const search = document.querySelector("#search");
+
 search.addEventListener("input", (e) => {
     const value = e.target.value;
     items.forEach((item) => {
@@ -19,7 +20,7 @@ search.addEventListener("input", (e) => {
         item.visible = visible;
     })
     renderItems();
-})
+});
 if(!items.length) {
        const a = async () => {
         fetch("./scripts/items.json")
@@ -45,6 +46,7 @@ if(!items.length) {
 }
 
 function renderItems() {
+    
     const container = document.querySelector(".cards");
     container.replaceChildren();
     items.forEach((item) => container.appendChild(renderItem(item)));
@@ -107,6 +109,8 @@ function purchase(id) {
         window.location.href = "purchase.html";
     }
 }
+
+renderItems();
 
 })
 
