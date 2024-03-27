@@ -33,26 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const priceDiv = document.createElement("div");
         priceDiv.innerHTML = ` <span>total price: </span><span class="price">${transaction.totalPrice}</span><span>$</span>`;
         
-        const delImg = document.createElement("img");
-        delImg.classList.add("delete");
-        delImg.src = "./media/icons/trash.svg";
+        
 
         card.appendChild(itemImg);
         card.appendChild(quantityDiv);
         card.appendChild(priceDiv);
-        card.appendChild(delImg);
-
-        delImg.addEventListener("click", (e) => deleteTransaction(transaction));
+        
 
         return card;
     }
 
-    function deleteTransaction(transaction) {
-        const index = transactions.findIndex((t) => t === transaction);
-        transactions.splice(index, 1);
-        
-        renderHistory();
-    }
+    
 
     renderHistory();
 })
