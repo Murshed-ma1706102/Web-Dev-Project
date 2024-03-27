@@ -74,6 +74,9 @@ document.addEventListener("DOMContentLoaded", () => {
       
        const address = document.querySelector("#address");
        const quantity = document.querySelector(".quantityDiv span").innerText;
+       const errMsg = document.querySelector(".invalid");
+       const user = JSON.parse(localStorage.getItem("currentUser"));
+
        if(address.value === "") {
           document.querySelector(".empty").classList.remove("hide");
           e.preventDefault();
@@ -81,16 +84,17 @@ document.addEventListener("DOMContentLoaded", () => {
        
        else if(Number(quantity) > item.quantity) {
         document.querySelector(".empty").classList.add("hide");
-        const errMsg = document.querySelector(".invalid");
+        
         errMsg.innerHTML = `*The Availabe Quantity for this item is ${item.quantity}!!`;
         errMsg.classList.remove("hide");
         e.preventDefault();
        }
        else {
-          let user = JSON.parse(localStorage.getItem("currentUser"));
+          
           let price = document.querySelector(".price span");
 
           if(user.balance >= Number(price.innerText)) {
+             errMsg.classList.add("hide");
              user.balance -= Number(price.innerText);
              item.quantity -= Number(quantity);
              
@@ -101,11 +105,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     return item;
                 }
                 else {return i}
-             })
+            })
+            
              localStorage.setItem("currentUser", JSON.stringify(user));
              localStorage.setItem("items", JSON.stringify(items2));
              localStorage.setItem("transactions", JSON.stringify(transactions));
              successMsg();
+          }
+          else if(user.balance < Number(price.innerText)) {
+            
+            errMsg.innerHTML = `*You don't have a suffecient balance, your balance is: ${user.balance}`;
+            errMsg.classList.remove("hide");
           }
        }
    })
