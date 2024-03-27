@@ -9,12 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const container = document.querySelector(".cards");
         container.replaceChildren();
-        transactions.forEach((transaction) => {
+        // to let the last transaction to be appeared in the top
+        let transactions2 = transactions.reverse();
+        transactions2.forEach((transaction) => {
             if(user.userId === transaction.userId) {
                 container.appendChild(renderTransaction(transaction));
             }
         });
-
+        // to let the transactions arr return like it was in the first place
+        transactions.reverse();
         localStorage.setItem("transactions", JSON.stringify(transactions));
     }
 
