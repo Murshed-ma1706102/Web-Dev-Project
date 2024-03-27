@@ -1,5 +1,9 @@
+
 document.addEventListener("DOMContentLoaded", () => {
    
+   
+
+
    const jsonTransactions = localStorage.getItem("transactions");
    const transactions = jsonTransactions ? JSON.parse(jsonTransactions) : [];
 
@@ -66,15 +70,21 @@ document.addEventListener("DOMContentLoaded", () => {
    })
 
    const button = document.querySelector(".button");
-   button.addEventListener("click", () => {
+   button.addEventListener("click", (e) => {
       
        const address = document.querySelector("#address");
        const quantity = document.querySelector(".quantityDiv span").innerText;
        if(address.value === "") {
-         alert("Address field is required")
+          document.querySelector(".empty").classList.remove("hide");
+          e.preventDefault();
        }
+       
        else if(Number(quantity) > item.quantity) {
-        console.log("jjj")
+        document.querySelector(".empty").classList.add("hide");
+        const errMsg = document.querySelector(".invalid");
+        errMsg.innerHTML = `*The Availabe Quantity for this item is ${item.quantity}!!`;
+        errMsg.classList.remove("hide");
+        e.preventDefault();
        }
        else {
           let user = JSON.parse(localStorage.getItem("currentUser"));
@@ -84,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
              user.balance -= Number(price.innerText);
              item.quantity -= Number(quantity);
              
-             transactions.push({"userId": user.userId, "sellerId": item.sellerId, "item": item.src, "quantity":quantity});
+             transactions.push({ "userId": user.userId, "sellerId": item.sellerId, "item": item.src, "quantity":quantity, "totalPrice":price.innerText});
              
              let items2 = items.map((i) => {
                 if(i.itemId == item.itemId) {

@@ -104,6 +104,19 @@ main{
     border: none;
   }
   
+  .invalid, .empty {
+    margin-top: 4px;
+    color: #cc0000;
+  }
+  .invalid {
+    text-align: center;
+  }
+  .empty {
+    text-align: start;
+  }
+  .hide {
+    display: none;
+  }
   button {
     border: none;
     padding: 10px 20px;

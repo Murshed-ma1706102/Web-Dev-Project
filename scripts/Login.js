@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             storeUserInStorage(JSON.stringify(user));
             window.location.href = "mainPage.html";
           } else {
-            alert("Invalid username or password");
+            document.querySelector(".invalid").classList.remove("hide");
           }
         });
     } catch (error) {

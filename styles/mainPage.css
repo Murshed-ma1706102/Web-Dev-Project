@@ -59,6 +59,12 @@ header form {
     border-radius: 22px;
     background-color: #f6f6f6;
 }
+@media screen and (max-width: 798px) {
+    
+    header form {
+        width: 200px;
+    }
+}
 
 header #search {
     
@@ -68,6 +74,21 @@ header #search {
     background-color: transparent;
     flex: 1;
 }
+
+nav {
+    width: fit-content;
+}
+
+nav button {
+    outline: none;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #d2a679;
+    margin: 2px;
+    cursor: pointer;
+}
+
 
 section {
     margin: 3em 3em 2.5em;

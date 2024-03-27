@@ -1,11 +1,15 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-const currentUser= JSON.parse(localStorage.getItem("currentUser"));
+const user = localStorage.getItem("currentUser");
+const currentUser = user ? JSON.parse(user): "";
 if(currentUser) {
     const loginBtn = document.querySelector(".login");
     loginBtn.style.display = "none";
     document.querySelector("header").style.justifyContent = "unset";
+
+    const menu = document.querySelector(".menu");
+    menu.classList.remove("hide");
 }
 
 const jsonItems = localStorage.getItem("items");
@@ -21,6 +25,13 @@ search.addEventListener("input", (e) => {
     })
     renderItems();
 });
+
+document.querySelector("#history").addEventListener("click", (e) => window.location.href = "history.html");
+document.querySelector("#logout").addEventListener("click", (e) => {
+    localStorage.setItem("currentUser", "");
+    window.location.reload(true);
+});
+
 if(!items.length) {
        const a = async () => {
         fetch("./scripts/items.json")
@@ -45,6 +56,7 @@ if(!items.length) {
     a();
 }
 
+
 function renderItems() {
     
     const container = document.querySelector(".cards");
@@ -63,7 +75,12 @@ function renderItem(item) {
     img.src = item.src;
    
     let desc = document.createElement("p");
-    desc.innerHTML = item.describtion;
+    if(item.quantity == 0) {
+        desc.innerHTML = "Sold Out!"
+    }
+    else {
+        desc.innerHTML = item.describtion;
+    }
     
     let div = document.createElement("div");
     div.innerHTML = `<span>price: </span> <span id="price">${item.price}</span><span>$</span>`;
@@ -84,7 +101,12 @@ function renderItem(item) {
 
     btn.addEventListener("click", (e) => {
         if(currentUser) {
-            purchase(item.itemId);
+            if(item.quantity == 0) {
+                e.preventDefault();
+            }
+            else {
+                purchase(item.itemId);
+            }
         }
         else {
             window.location.href = "index.html";
