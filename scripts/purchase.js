@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
              user.balance -= Number(price.innerText);
              item.quantity -= Number(quantity);
              
-             transactions.push({ "userId": user.userId, "sellerId": item.sellerId, "item": item.src, "quantity":quantity, "totalPrice":price.innerText});
+             transactions.push({ "userId": user.userId, "sellerId": item.sellerId, "itemId": item.itemId, "quantity":quantity, "totalPrice":price.innerText});
              
              let items2 = items.map((i) => {
                 if(i.itemId == item.itemId) {
