@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="styles/seller.css">
+</head>
+<body>
+    <header>
+        <div>
+          <h1>Easy-Shop</h1>
+          <p>“Fashion Finds Delivered to Your Doorstep.”</p>
+        </div> 
+    </header>
+    <form>
+        
+    <div class="selection-container">
+        <h1>Filter:</h1>
+        <input type="radio" name="item" id="allItems" value="allItems" hidden checked>
+        <label for="allItems" class="selection-option">All Items</label>
+      
+        <input type="radio" name="item" id="soldItems" value="soldItems" hidden>
+        <label for="soldItems" class="selection-option">Sold Items</label>
+      
+        <input type="radio" name="item" id="itemsOnSale" value="itemsOnSale" hidden>
+        <label for="itemsOnSale" class="selection-option">Items on Sale</label>
+      </div>
+    </form>
+    <section class="items">
+        <div class="cards">
+
+        </div>
+    </section>
+      <script src="scripts/seller.js"></script>
+</body>
+</html>
+
