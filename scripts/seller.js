@@ -59,16 +59,22 @@ function renderAvailableItem() {
       let div = document.createElement("div");
       div.innerHTML = `<span>price: </span> <span id="price">${item.price}</span><span>$</span>`;
 
-      if (item.visible !== undefined) {
-        card.classList.toggle("hide", !item.visible);
-      }
+    
 
       const soldStatus = document.createElement("div");
-      soldStatus.classList.add("not-sold");
+      soldStatus.classList.add("sold");
+      soldStatus.classList.add("on-sale");
+      const soldText = document.createElement("p")
+      soldText.innerHTML = "On Sale"
+      soldStatus.appendChild(soldText)
+
+      const quantity = document.createElement("p")
+      quantity.innerHTML = `Stock left: ${item.quantity}`
 
       card.appendChild(soldStatus);
       card.appendChild(img);
       card.appendChild(desc);
+      card.appendChild(quantity)
       card.appendChild(div);
 
       container.appendChild(card)
@@ -91,17 +97,23 @@ function renderAvailableItem() {
 
             const soldStatus = document.createElement("div");
             soldStatus.classList.add("sold");
-            soldStatus.innerHTML = "SOLD";
+            const soldText = document.createElement("p")
+            soldText.innerHTML = "SOLD"
+            soldStatus.appendChild(soldText) 
 
             const buyer = document.createElement("p");
             buyer.innerHTML = `Buyer user id: ${item.userId}`;
             const quantity = document.createElement("p");
             quantity.innerHTML = `Quantity: ${item.quantity}`;
+            const totalPrice = document.createElement("p");
+            totalPrice.innerHTML = `Total Price: ${item.totalPrice}`
 
+            card.appendChild(soldStatus);
             card.appendChild(img);
             card.appendChild(buyer);
             card.appendChild(quantity);
-            card.appendChild(soldStatus);
+            card.appendChild(totalPrice)
+            
             container.appendChild(card)
     }})
     

@@ -98,8 +98,9 @@ form{
   }
 
   section .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 25px;
 }
 
@@ -112,7 +113,7 @@ form{
     border-radius: 20px;
     width: fit-content;
     height: 300px;
-    margin: 0 auto;
+   
     overflow: hidden;
 }
 
@@ -133,7 +134,11 @@ form{
     background-color: rgb(213, 11, 11);
     display: flex;
     align-items: center;
-    justify-self: center;
+    justify-content: center;
+}
+
+.on-sale{
+    background-color: green;
 }
 
   @media screen and (max-width: 798px){

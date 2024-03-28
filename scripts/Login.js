@@ -22,7 +22,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           if (user) {
             storeUserInStorage(JSON.stringify(user));
-            window.location.href = "mainPage.html";
+            if (user.type == "seller")
+              window.location.href = "seller.html";
+            else 
+              window.location.href = "mainPage.html";
           } else {
             document.querySelector(".invalid").classList.remove("hide");
           }

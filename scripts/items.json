@@ -25,6 +25,15 @@
     "quantity": 10,
     "src": "./media/imgs/shirts/shirt-3.avif",
     "describtion": "black t-shirt with writing"
+},
+{
+    "itemId": 4, 
+    "type": "shirt",
+    "price": 40,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "https://freepngimg.com/thumb/categories/579.png",
+    "describtion": "black t-shirt with writing"
 }
     
 ]
