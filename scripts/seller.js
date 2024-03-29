@@ -4,6 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // reading from localStorage
   const currentUser= JSON.parse(localStorage.getItem("currentUser"));
+
   const jsonItems = localStorage.getItem("items");
   let items = jsonItems ? JSON.parse(jsonItems):[];
   const jsonSoldItems = localStorage.transactions
@@ -202,6 +203,12 @@ document.addEventListener("DOMContentLoaded", () => {
           <button class="go-back">Go back</button>
       </div>`;
   }
+
+  document.querySelector("#add-item").addEventListener("click", (e) => {
+    
+    window.location.href = "addItem.html";
+    e.preventDefault();
+  })
 
 });
 

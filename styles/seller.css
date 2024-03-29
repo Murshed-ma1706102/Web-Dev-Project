@@ -21,18 +21,14 @@ h1, h2, h3 {
 }
   
 header{
-    margin: 1.25em;
-    color: black;
-    padding: 12px;
+    display: grid;
+    grid-template-columns: auto  auto;
+      justify-content: space-between;
+      align-items: center;
+      margin: 1.25em;
+      color: black;
+      padding: 12px;
 }
-@media screen and (max-width: 959px) {
-  
-  header {
-    display: flex;
-    justify-content: center;
-  }
-}
-
 header div {
     display: flex;
     flex-direction: column;
@@ -43,8 +39,19 @@ header div {
 header h1 {
   font-size: 2.5em;
 }
+header a {
+    background-color: #d2a679;
+    text-decoration: none;
+    text-align: center;
+    width: 60px;
+    padding: 12px;
+    color: var(--clr-link);
+    border-radius: 30px;
+}
 
-
+.hide {
+    display: none;
+}
 
 
 
@@ -182,6 +189,7 @@ form button {
     color: #d2a679;
 }
 
+
 .items{
     display: flex;
     justify-content: center;
@@ -227,6 +235,18 @@ form button {
 
     .details{
         gap: 30px;
+    }
+
+    .go-back {
+        border: none;
+        outline: none;
+        padding: 10px;
+        border-radius: 7px;
+        background-color: #d2a679;
+        cursor: pointer;
+    }
+    .go-back:hover {
+        background-color: #b98c5d;
     }
     
   }
