@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const jsonTransactions = localStorage.getItem("transactions");
     const transactions = jsonTransactions ? JSON.parse(jsonTransactions) : [];
 
+    const jsonItems = localStorage.getItem("items");
+    let items = jsonItems ? JSON.parse(jsonItems):[];
+
     function renderHistory() {
 
         const container = document.querySelector(".cards");
@@ -23,12 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderTransaction(transaction) {
 
+        const itemInStorage = items.find(i => i.itemId == transaction.itemId)
+
         const card = document.createElement("div");
         card.classList.add("card");
 
         const itemImg = document.createElement("img");
         itemImg.classList.add("itemImg");
-        itemImg.src = transaction.itemImg;
+        itemImg.src = itemInStorage.src; // get img from items storage
 
         const quantityDiv = document.createElement("div");
         quantityDiv.innerHTML = `quantity: <span>${transaction.quantity}</span>`;
@@ -46,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return card;
     }
 
+    
     document.querySelector("header div").addEventListener("click", (e) => {
         window.location.href = "mainPage.html";
     })
