@@ -65,8 +65,16 @@ document.addEventListener("DOMContentLoaded", () => {
         soldStatus.classList.add("sold");
         soldStatus.classList.add("on-sale");
         const soldText = document.createElement("p")
-        soldText.innerHTML = "On Sale"
-        soldStatus.appendChild(soldText)
+        if(item.quantity > 0) {
+          soldText.innerHTML = "On Sale"
+          soldStatus.appendChild(soldText)
+        }
+        else {
+          soldText.innerHTML = "out of stock"
+          soldStatus.appendChild(soldText);
+          soldStatus.style.backgroundColor = "red";
+        }
+        
   
         const quantity = document.createElement("p")
         quantity.innerHTML = `Stock left: ${item.quantity}`
@@ -121,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
               btn.innerText = "Details";
               btn.addEventListener("click",() => {
                   showSoldDetails(soldItem)
-                  console.log("gjjgwj");
               })
   
               card.appendChild(soldStatus);
@@ -152,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   
   function showSoldDetails(item){
-      console.log("hhh");
+      
       const cards = document.querySelector(".cards")
       cards.innerHTML = ""
   
@@ -191,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="sold">SOLD</div>
           <h1>Description: ${itemInStorage.describtion}</h1>
           <h1>Quantity Sold: ${item.quantity}</h1>
-          <h1>Buyer ID: ${item.userId}</h1>
+          <h1>Buyer name: ${item.username}</h1>
           <button class="go-back">Go back</button>
       </div>`;
   }

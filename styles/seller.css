@@ -21,14 +21,18 @@ h1, h2, h3 {
 }
   
 header{
-    display: grid;
-    grid-template-columns: auto auto auto ;
-      justify-content: space-between;
-      align-items: center;
-      margin: 1.25em;
-      color: black;
-      padding: 12px;
+    margin: 1.25em;
+    color: black;
+    padding: 12px;
 }
+@media screen and (max-width: 959px) {
+  
+  header {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 header div {
     display: flex;
     flex-direction: column;
@@ -39,15 +43,7 @@ header div {
 header h1 {
   font-size: 2.5em;
 }
-header a {
-    background-color: #d2a679;
-    text-decoration: none;
-    text-align: center;
-    width: 60px;
-    padding: 12px;
-    color: var(--clr-link);
-    border-radius: 30px;
-}
+
 
 
 
@@ -68,6 +64,17 @@ form button {
     width: 90px;
     margin-top: 8px;
     margin-left: 30px;
+    cursor: pointer;
+}
+@media screen and (max-width: 798px) {
+    form {
+        flex-direction: column-reverse;
+
+    }
+    form button {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
 }
 
 .selection-container {
@@ -83,6 +90,11 @@ form button {
 
     h1{
         font-size: clamp(1rem, 1.3vw, 2rem);
+    }
+  }
+  @media screen and (max-width: 798px) {
+    .selection-container {
+        flex-direction: column;
     }
   }
   
@@ -202,10 +214,6 @@ form button {
 
 
   @media screen and (max-width: 798px){
-
-    .selection-container {
-        flex-direction: column;
-    }
 
     .item-details{
         margin-bottom: 30px;

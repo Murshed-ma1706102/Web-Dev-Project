@@ -41,7 +41,7 @@
     "price": 50,
     "sellerId": 2,
     "quantity": 10,
-    "src": "./media/imgs/pants/black.jpg",
+    "src": "./media",
     "describtion": "black pant"
 },
 {
