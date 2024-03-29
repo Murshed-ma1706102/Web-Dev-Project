@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelector("section h2").innerText = type2;
         const container = document.querySelector("section .cards");
         container.replaceChildren();
-        
-        const t = type2=="Shirts" ? "shirt" : "pant";
+
+        const t = type2=="Shirts" ? "shirt" : type2=="Hoodies" ? "hoodie": "pant";
         
         const res = await fetch("./scripts/items.json");
         let data;
