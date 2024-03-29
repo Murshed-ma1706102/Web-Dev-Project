@@ -142,6 +142,78 @@
     "quantity": 10,
     "src": "./media/imgs/pants/blue-pant.webp",
     "describtion": "Blue trouser"
+},
+{
+    "itemId": 17, 
+    "type": "hoodie",
+    "price": 80,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/blue-hoodie.jpeg",
+    "describtion": "Blue hoodie"
+},
+{
+    "itemId": 18, 
+    "type": "hoodie",
+    "price": 75,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/blak-hoodie.jpg",
+    "describtion": "Black hoodie"
+},
+{
+    "itemId": 19, 
+    "type": "hoodie",
+    "price": 70,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/white-hoodie.jpeg",
+    "describtion": "White hoodie"
+},
+{
+    "itemId": 20, 
+    "type": "hoodie",
+    "price": 80,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/beige-hoodie.webp",
+    "describtion": "Beige hoodie"
+},
+{
+    "itemId": 21, 
+    "type": "hoodie",
+    "price": 65,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/brown-hoodie.webp",
+    "describtion": "Brown hoodie"
+},
+{
+    "itemId": 22, 
+    "type": "hoodie",
+    "price": 75,
+    "sellerId": 2,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/green-hoodie.jpg",
+    "describtion": "Green hoodie"
+},
+{
+    "itemId": 23, 
+    "type": "hoodie",
+    "price": 85,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/red-hoodie.jpeg",
+    "describtion": "Red hoodie"
+},
+{
+    "itemId": 24, 
+    "type": "hoodie",
+    "price": 65,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/hoodies/pink-hoodie.jpeg",
+    "describtion": "Pink hoodie"
 }
 ]
 
