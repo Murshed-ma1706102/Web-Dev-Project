@@ -52,7 +52,7 @@ function renderAvailableItem() {
       img.src = item.src;
 
       let desc = document.createElement("p");
-      desc.innerHTML = item.describtion;
+      desc.innerHTML = `description:${item.describtion}`;
 
       let div = document.createElement("div");
       div.innerHTML = `<span>price: </span> <span id="price">${item.price}</span><span>$</span>`;
@@ -154,7 +154,7 @@ function onSaleToHtml(item) {
     <div class="details">
         <div class="sold on-sale">On Sale</div>
         <h1>Description: ${item.describtion}</h1>
-        <h1>Quantity: ${item.quantity}</h1>
+        <h1>Quantity Left: ${item.quantity}</h1>
         <h1>Type: ${item.type}</h1>
         <button class="go-back">Go back</button>
     </div>`;
