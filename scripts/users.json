@@ -2,7 +2,7 @@
     {
         "userId": 1,
         "username": "user1",
-        "password": "pass",
+        "password": "password",
         "type": "customer",
         "balance": 500
         
@@ -10,37 +10,23 @@
     {
        "userId": 2,
        "username": "user2",
-       "password": "pass",
+       "password": "password",
        "type": "seller"
     }
 ,
     {
         "userId": 3,
         "username": "user3",
-        "password": "pass",
+        "password": "password",
         "type": "customer",
-        "balance": 500
+        "balance": 700
         
     },
     {
        "userId": 4,
        "username": "user4",
-       "password": "pass",
+       "password": "password",
        "type": "seller"
     }
-,
-    {
-        "userId": 5,
-        "username": "user5",
-        "password": "pass",
-        "type": "customer",
-        "balance": 500
-        
-    },
-    {
-       "userId": 6,
-       "username": "user6",
-       "password": "pass",
-       "type": "seller"
-    }
+
 ]
