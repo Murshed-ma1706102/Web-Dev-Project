@@ -4,10 +4,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   // reading from localStorage
   const currentUser= JSON.parse(localStorage.getItem("currentUser"));
+  if(!currentUser) {
+    window.location.href="index.html";
+  }
+  // if the user logged out the current user in local storage will set to be null
+  document.querySelector(".logout").addEventListener("click", (e)=> {
+    localStorage.setItem("currentUser", null);
+  })
 
   const jsonItems = localStorage.getItem("items");
   let items = jsonItems ? JSON.parse(jsonItems):[];
-  const jsonSoldItems = localStorage.transactions
+  const jsonSoldItems = localStorage.transactions;
   let soldItems = jsonSoldItems ? JSON.parse(jsonSoldItems) : [];
   
     //for initial load
