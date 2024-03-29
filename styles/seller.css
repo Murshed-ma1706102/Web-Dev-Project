@@ -236,17 +236,16 @@ form button {
     .details{
         gap: 30px;
     }
+}
 
-    .go-back {
-        border: none;
-        outline: none;
-        padding: 10px;
-        border-radius: 7px;
-        background-color: #d2a679;
-        cursor: pointer;
-    }
-    .go-back:hover {
-        background-color: #b98c5d;
-    }
-    
-  }
+.go-back {
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 7px;
+    background-color: #d2a679;
+    cursor: pointer;
+}
+.go-back:hover {
+    background-color: #b98c5d;
+}
