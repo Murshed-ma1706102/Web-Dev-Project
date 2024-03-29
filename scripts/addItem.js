@@ -56,22 +56,83 @@ document.addEventListener("DOMContentLoaded", () => {
         desc.innerText = item.describtion;
 
         let btn = document.createElement("button");
-        btn.id = "add";
         btn.innerText = "Add Item";
 
         card.appendChild(img);
         card.appendChild(desc);
         card.appendChild(btn);
    
+        btn.addEventListener("click", (e) => {
+
+            document.querySelector(".menu").classList.add("hide");
+            document.querySelector("section").classList.add("hide");
+            document.querySelector(".button").classList.remove("hide");
+            addItem(item);
+        })
         return card;
     }
 
+    function addItem(item) {
+
+        const card = document.querySelector(".selected-card");
+   
+        const itemPic = document.createElement("img");
+        itemPic.src = item.src;
+
+        const desc = document.createElement("p");
+        desc.innerText = item.describtion;
+
+        const quantityDiv = document.createElement("div");
+        quantityDiv.classList.add("quantityDiv");
+
+        const decImg = document.createElement("img");
+        decImg.src = "./media/icons/trash.svg";
+
+        const quantity = document.createElement("span");
+        quantity.innerText = 1;
+
+        const addImg = document.createElement("img");
+        addImg.src = "media/icons/plus.svg";
+   
+        
+        quantityDiv.appendChild(decImg);
+        quantityDiv.appendChild(quantity);
+        quantityDiv.appendChild(addImg);
+
+        card.appendChild(itemPic);
+        card.appendChild(desc);
+        card.appendChild(quantityDiv);
+
+        addImg.addEventListener("click", (e) => {
+      
+            const quantity = document.querySelector(".quantityDiv span");
+            quantity.innerText = Number(quantity.textContent) + 1;
+            if(Number(quantity.textContent) > 1) {
+               decImg.src = "./media/icons/minus.svg";
+            }
+         })
+
+         decImg.addEventListener("click", (e) => {
+      
+            const quantity = document.querySelector(".quantityDiv span");
+            
+            
+            if(Number(quantity.textContent) == 1) {
+                window.location.reload(true);
+            }
+        
+            quantity.innerText = Number(quantity.textContent) - 1;
+            
+            if(Number(quantity.textContent) == 1) {
+                decImg.src = "./media/icons/trash.svg";
+            }
+           })
+    }
 
 
-
-
-
-
+    document.querySelector("#add-item").addEventListener("click", (e) => {
+        
+    })
     
 
     document.querySelector("header div").addEventListener("click", (e) => {
