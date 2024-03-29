@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
              user.balance -= Number(price.innerText);
              item.quantity -= Number(quantity);
              
-             transactions.push({ "userId": user.userId, "sellerId": item.sellerId, "itemId": item.itemId, "quantity":quantity, "totalPrice":price.innerText});
+             transactions.push({ "userId": user.userId,"username": user.username, "sellerId": item.sellerId, "itemId": item.itemId, itemImg: item.src, "quantity":quantity, "totalPrice":price.innerText});
              
              let items2 = items.map((i) => {
                 if(i.itemId == item.itemId) {
@@ -145,5 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "mainPage.html";
      })
    }
+   
+   // if the user click on the logo it will return him to the main page
+   document.querySelector("header div").addEventListener("click", (e) => {
+      window.location.href = "mainPage.html";
+    })
 
 })

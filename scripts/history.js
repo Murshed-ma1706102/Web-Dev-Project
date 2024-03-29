@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const itemImg = document.createElement("img");
         itemImg.classList.add("itemImg");
-        itemImg.src = transaction.item;
+        itemImg.src = transaction.itemImg;
 
         const quantityDiv = document.createElement("div");
         quantityDiv.innerHTML = `quantity: <span>${transaction.quantity}</span>`;
@@ -46,6 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return card;
     }
 
+    document.querySelector("header div").addEventListener("click", (e) => {
+        window.location.href = "mainPage.html";
+    })
     
 
     renderHistory();

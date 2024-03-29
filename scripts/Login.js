@@ -34,4 +34,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       alert("Can't access json");
     }
   };
+
+  // if the user click on the logo it will return him to the main page
+  document.querySelector("header div").addEventListener("click", (e) => {
+    localStorage.setItem("currentUser", null);
+    window.location.href = "mainPage.html";
+  })
 });
