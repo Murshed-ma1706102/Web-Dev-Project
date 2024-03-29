@@ -34,8 +34,25 @@
     "quantity": 10,
     "src": "https://freepngimg.com/thumb/categories/579.png",
     "describtion": "black t-shirt with writing"
-}
-    
+},
+{
+    "itemId": 5, 
+    "type": "pant",
+    "price": 50,
+    "sellerId": 2,
+    "quantity": 10,
+    "src": "./media/imgs/pants/black.jpg",
+    "describtion": "black pant"
+},
+{
+    "itemId": 6, 
+    "type": "pant",
+    "price": 60,
+    "sellerId": 4,
+    "quantity": 10,
+    "src": "./media/imgs/pants/brown.jpg",
+    "describtion": "Brown pant"
+}   
 ]
 
 

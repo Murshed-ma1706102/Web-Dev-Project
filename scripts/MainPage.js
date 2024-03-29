@@ -40,7 +40,7 @@ if(!items.length) {
         }).then((data) => {
         
             let n = 0;
-            while(n < 3) {
+            while(n < 6) {
                 let id = Math.floor(Math.random() * 10);
                 
                 if(data[id]) {
