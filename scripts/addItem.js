@@ -1,12 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // get the current user and the items stored in local storage
     const currentUser =  JSON.parse(localStorage.getItem("currentUser"));
+    const jsonItems = localStorage.getItem("items");
+    let items = jsonItems ? JSON.parse(jsonItems):[];
+
 
     const menu = document.querySelector(".menu");
     const typeDiv = document.querySelector(".menu div");
     const options = document.querySelectorAll(".option");
     const type = document.querySelector(".menu div span");
 
+    // show of hide the menu options when the user click the menu
     typeDiv.addEventListener("click", (e) => {
         document.querySelector(".options").classList.toggle("active");
         typeDiv.querySelector("img").classList.toggle("rotate");
@@ -22,7 +27,8 @@ document.addEventListener("DOMContentLoaded", () => {
         })
     })
 
-    
+
+    // show the items with the same type that the user shose
     const renderItems =  async(type2) => {
         
         document.querySelector("section").classList.remove("hide");
@@ -72,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return card;
     }
 
+    // create the card for the item that the seller shose to add
     function addItem(item) {
 
         const card = document.querySelector(".selected-card");
@@ -103,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         card.appendChild(desc);
         card.appendChild(quantityDiv);
 
+        // increase the quantity if the user click the + img
         addImg.addEventListener("click", (e) => {
       
             const quantity = document.querySelector(".quantityDiv span");
@@ -112,27 +120,71 @@ document.addEventListener("DOMContentLoaded", () => {
             }
          })
 
+         // decrease the quantity if the user click the - img 
          decImg.addEventListener("click", (e) => {
       
             const quantity = document.querySelector(".quantityDiv span");
             
-            
+            // return the user to the previous page if he clicked the trash image that means he dont want to add this item
             if(Number(quantity.textContent) == 1) {
                 window.location.reload(true);
             }
         
             quantity.innerText = Number(quantity.textContent) - 1;
             
+    
             if(Number(quantity.textContent) == 1) {
                 decImg.src = "./media/icons/trash.svg";
             }
            })
+        
+        document.querySelector("#add-item").addEventListener("click", (e) => {
+         
+            // get the quantity
+            const quantity = Number(document.querySelector(".quantityDiv span").innerText);
+            // see if the item is exist in local storage
+            let index = items.findIndex((i) => i.itemId == item.itemId);
+            
+            // if it doesn't exist it will simply add the item
+            if(index == -1) {
+                items.push(item);
+            }
+            // if it exist it will increase it's quantity
+            else {
+                let item2 = items.find((i) => i.itemId == item.itemId);
+                item2.quantity += quantity;
+                items[index] = item2;
+            }
+            localStorage.setItem("items", JSON.stringify(items));
+            successMsg();
+        })
     }
 
+    function successMsg() {
+       
+        document.querySelector(".selected-card").classList.add("hide");
+        document.querySelector(".button").classList.add("hide");
+   
+        const popup = document.querySelector(".popup");
+        popup.classList.add("open");
+        let img = document.createElement("img");
+        img.src = "./media/icons/check.svg";
+        let h2 = document.createElement("h2");
+        h2.innerText = "Item Added Succesfully!"
+        let btn = document.createElement("button");
+        btn.innerText = "ok";
+        popup.appendChild(img);
+        popup.appendChild(h2);
+        popup.appendChild(btn);
+   
+        
+        btn.addEventListener("click", (e) => {
+           window.location.reload(true);
+        })
+      }
 
-    document.querySelector("#add-item").addEventListener("click", (e) => {
-         
-    })
+
+    
     
 
     document.querySelector("header div").addEventListener("click", (e) => {

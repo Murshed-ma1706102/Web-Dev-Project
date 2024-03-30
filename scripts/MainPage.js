@@ -1,8 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+ 
 const user = localStorage.getItem("currentUser");
 const currentUser = user ? JSON.parse(user): "";
+// if there is a currentUser in the local storage  we will remove the login btn
 if(currentUser) {
     const loginBtn = document.querySelector(".login");
     loginBtn.style.display = "none";
@@ -15,12 +17,16 @@ if(currentUser) {
 const jsonItems = localStorage.getItem("items");
 let items = jsonItems ? JSON.parse(jsonItems):[];
 
-const search = document.querySelector("#search");
 
+const search = document.querySelector("#search");
+// when the user input any thing in the search bar we will see if there is an item with the same desc
 search.addEventListener("input", (e) => {
-    const value = e.target.value;
+    const value = String( e.target.value).toLowerCase()
+    
+    // add a attr visible for every item and make it value true if the desc of the item contains the value on the search
     items.forEach((item) => {
-        const visible = item.describtion.includes(value);
+        let describtion = String(item.describtion).toLowerCase();
+        const visible = describtion.includes(value);
         item.visible = visible;
     })
     renderItems();
@@ -32,6 +38,7 @@ document.querySelector("#logout").addEventListener("click", (e) => {
     window.location.reload(true);
 });
 
+// if there is no items in the local storage we will add 4 items for each item categorie
 if(!items.length) {
        const a = async () => {
         fetch("./scripts/items.json")
@@ -39,16 +46,15 @@ if(!items.length) {
             return res.json();
         }).then((data) => {
         
-            let n = 0;
-            while(n < 6) {
-                let id = Math.floor(Math.random() * 10);
-                
-                if(data[id]) {
-                    if(addItem(data[id])) {
-                     n++;
-                    }
-                }
-                
+            let n = 4;
+            while(n < 12) {
+                items.push(data[n]);
+                n++;
+            }
+            n = 17;
+            while(n <= 20) {
+                items.push(data[n]);
+                n++;
             }
             renderItems(); 
         })    
@@ -59,9 +65,23 @@ if(!items.length) {
 
 function renderItems() {
     
-    const container = document.querySelector(".cards");
-    container.replaceChildren();
-    items.forEach((item) => container.appendChild(renderItem(item)));
+    const hoodiesContainer = document.querySelector("#hoodies .cards");
+    const shirtsContainer = document.querySelector("#shirts .cards");
+    const trousersContainer = document.querySelector("#trousers .cards");
+   
+    shirtsContainer.replaceChildren();
+    trousersContainer.replaceChildren();
+    hoodiesContainer.replaceChildren();
+
+    items.forEach((item) => {
+        if(item.type === "shirt") {
+            shirtsContainer.appendChild(renderItem(item));
+        }else if (item.type === "hoodie") {
+            hoodiesContainer.appendChild(renderItem(item));
+        }else {
+            trousersContainer.appendChild(renderItem(item));
+        }
+    });
 
     localStorage.setItem("items", JSON.stringify(items));
 }
@@ -75,6 +95,7 @@ function renderItem(item) {
     img.src = item.src;
    
     let desc = document.createElement("p");
+    // set the desc of the item to sold out if there is no quantity left
     if(item.quantity == 0) {
         desc.innerHTML = "Sold Out!"
     }
@@ -101,6 +122,7 @@ function renderItem(item) {
 
     btn.addEventListener("click", (e) => {
         if(currentUser) {
+            
             if(item.quantity == 0) {
                 e.preventDefault();
             }
@@ -108,6 +130,7 @@ function renderItem(item) {
                 purchase(item.itemId);
             }
         }
+        // if the user tried to buy an item and he is not logged he will be returned to the login page
         else {
             window.location.href = "index.html";
         }
@@ -116,13 +139,6 @@ function renderItem(item) {
     
 }
 
-function addItem(item) {
-
-    if(!items.find((i) => i.itemId === item.itemId)){
-         items.push(item)
-         return true;
-      }
-}
 
 function purchase(id) {
     const item = items.find((i) => i.itemId === id);

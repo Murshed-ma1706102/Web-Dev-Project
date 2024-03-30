@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+
+     // get the current user and the transactions stored in local storage
     const user = JSON.parse(localStorage.getItem("currentUser"));
     
     const jsonTransactions = localStorage.getItem("transactions");
@@ -21,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("transactions", JSON.stringify(transactions));
     }
 
+    
     function renderTransaction(transaction) {
 
         const card = document.createElement("div");
