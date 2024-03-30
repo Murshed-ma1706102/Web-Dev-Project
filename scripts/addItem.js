@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
             // if it doesn't exist it will simply add the item
             if(index == -1) {
+                item.quantity = quantity;
                 items.push(item);
             }
             // if it exist it will increase it's quantity
