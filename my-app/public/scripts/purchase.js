@@ -1,13 +1,7 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
    
    
-
-
-   const jsonTransactions = localStorage.getItem("transactions");
-   const transactions = jsonTransactions ? JSON.parse(jsonTransactions) : [];
-
-   const items = JSON.parse(localStorage.getItem("items"));
 
    const item = JSON.parse(localStorage.getItem("purchasedItem"));
 
@@ -70,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
    })
 
    const button = document.querySelector(".button");
-   button.addEventListener("click", (e) => {
+   button.addEventListener("click", async (e) => {
       
        const address = document.querySelector("#address");
        const quantity = document.querySelector(".quantityDiv span").innerText;
@@ -98,18 +92,27 @@ document.addEventListener("DOMContentLoaded", () => {
              user.balance -= Number(price.innerText);
              item.quantity -= Number(quantity);
              
-             transactions.push({ "userId": user.userId,"username": user.username, "sellerId": item.sellerId, "itemId": item.itemId, itemImg: item.src, "quantity":quantity, "totalPrice":price.innerText});
+             const res = await fetch("/api/transactions", {
+               method: "POST",
+                 body: JSON.stringify({sellerId: item.sellerId, buyerId: user.userId, itemId: item.itemId, totalPrice: price.innerText, quantity: quantity})
+             });
+             if(res.ok) {
+               console.log("ok")
+             }
+              
+              const res1 = await fetch("/api/items", {
+               method: "PUT",
+               body: JSON.stringify({itemId: item.itemId ,"quantity": item.quantity})
+             });
              
-             let items2 = items.map((i) => {
-                if(i.itemId == item.itemId) {
-                    return item;
-                }
-                else {return i}
-            })
+
+             const res2 = await fetch("/api/users", {
+               method: "PUT",
+               body: JSON.stringify({buyerId: user.userId ,balance: user.balance})
+             });
+             
             
              localStorage.setItem("currentUser", JSON.stringify(user));
-             localStorage.setItem("items", JSON.stringify(items2));
-             localStorage.setItem("transactions", JSON.stringify(transactions));
              successMsg();
           }
           else if(user.balance < Number(price.innerText)) {

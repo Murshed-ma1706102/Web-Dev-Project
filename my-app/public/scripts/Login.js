@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const sign_in = async () => {
     try {
-      fetch("./scripts/users.json")
+      await fetch("/api/users")
         .then((response) => {
           return response.json();
         })

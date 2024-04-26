@@ -1,7 +1,7 @@
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // reading from localStorage
   const currentUser= JSON.parse(localStorage.getItem("currentUser"));
   if(!currentUser) {
@@ -12,10 +12,17 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("currentUser", null);
   })
 
-  const jsonItems = localStorage.getItem("items");
-  let items = jsonItems ? JSON.parse(jsonItems):[];
-  const jsonSoldItems = localStorage.transactions;
-  let soldItems = jsonSoldItems ? JSON.parse(jsonSoldItems) : [];
+    let res   = await fetch("/api/transactions")
+    let soldItems = []
+    if(res.ok) {
+         soldItems = await res.json();
+    }
+
+    let res1   = await fetch("/api/items")
+    let items = []
+    if(res1.ok) {
+         items = await res1.json();
+    }
   
     //for initial load
   renderAvailableItem();
@@ -126,8 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
               soldText.innerHTML = "SOLD"
               soldStatus.appendChild(soldText) 
   
-              const buyer = document.createElement("p");
-              buyer.innerHTML = `Buyer user id: ${soldItem.userId}`;
+              
               const quantity = document.createElement("p");
               quantity.innerHTML = `Quantity: ${soldItem.quantity}`;
               const totalPrice = document.createElement("p");
@@ -135,8 +141,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
               let btn = document.createElement("button");
               btn.innerText = "Details";
-              btn.addEventListener("click",() => {
-                  showSoldDetails(soldItem)
+              btn.addEventListener("click",async () => {
+                  let res   = await fetch(`/api/users/${soldItem.buyerId}`)
+                  if(res.ok) {
+                       const buyer = await res.json();
+                       showSoldDetails(soldItem, buyer)
+                  }
+                  
               })
   
               card.appendChild(soldStatus);
@@ -166,14 +177,14 @@ document.addEventListener("DOMContentLoaded", () => {
   
   }
   
-  function showSoldDetails(item){
+  function showSoldDetails(item, buyer){
       
       const cards = document.querySelector(".cards")
       cards.innerHTML = ""
   
       const soldItemDetails = document.querySelector(".item-details")
       
-      soldItemDetails.innerHTML = soldToHtml(item)
+      soldItemDetails.innerHTML = soldToHtml(item, buyer)
       document.querySelector(".go-back").addEventListener("click", () =>{
           soldItemDetails.innerHTML = ""
           renderItems();
@@ -196,17 +207,17 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>`;
   }
   
-  function soldToHtml(item){
-      const itemInStorage = items.find(i => i.itemId == item.itemId)
+  function soldToHtml(item, buyer){
+      const item2 = items.find(i => i.itemId == item.itemId)
       return `
               
-      <img src="${itemInStorage.src}">
+      <img src="${item2.src}">
   
       <div class="details">
           <div class="sold">SOLD</div>
-          <h1>Description: ${itemInStorage.describtion}</h1>
+          <h1>Description: ${item2.describtion}</h1>
           <h1>Quantity Sold: ${item.quantity}</h1>
-          <h1>Buyer name: ${item.username}</h1>
+          <h1>Buyer name: ${buyer.username}</h1>
           <button class="go-back">Go back</button>
       </div>`;
   }

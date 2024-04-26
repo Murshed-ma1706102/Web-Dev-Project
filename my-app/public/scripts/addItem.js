@@ -1,9 +1,13 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     // get the current user and the items stored in local storage
     const currentUser =  JSON.parse(localStorage.getItem("currentUser"));
-    const jsonItems = localStorage.getItem("items");
-    let items = jsonItems ? JSON.parse(jsonItems):[];
+    
+    let res   = await fetch("/api/items")
+    let items = []
+    if(res.ok) {
+         items = await res.json();
+    }
 
 
     const menu = document.querySelector(".menu");
@@ -138,25 +142,18 @@ document.addEventListener("DOMContentLoaded", () => {
             }
            })
         
-        document.querySelector("#add-item").addEventListener("click", (e) => {
+        document.querySelector("#add-item").addEventListener("click", async (e) => {
          
             // get the quantity
             const quantity = Number(document.querySelector(".quantityDiv span").innerText);
             // see if the item is exist in local storage
             let index = items.findIndex((i) => i.itemId == item.itemId);
             
-            // if it doesn't exist it will simply add the item
-            if(index == -1) {
-                item.quantity = quantity;
-                items.push(item);
-            }
-            // if it exist it will increase it's quantity
-            else {
-                let item2 = items.find((i) => i.itemId == item.itemId);
-                item2.quantity += quantity;
-                items[index] = item2;
-            }
-            localStorage.setItem("items", JSON.stringify(items));
+            const res1 = await fetch("/api/items", {
+                method: "PUT",
+                body: JSON.stringify({itemId: String(item.itemId) ,"quantity": item.quantity})
+            });
+            
             successMsg();
         })
     }

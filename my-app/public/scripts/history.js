@@ -1,14 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
 
      // get the current user and the transactions stored in local storage
     const user = JSON.parse(localStorage.getItem("currentUser"));
     
-    const jsonTransactions = localStorage.getItem("transactions");
-    const transactions = jsonTransactions ? JSON.parse(jsonTransactions) : [];
+    let res   = await fetch("/api/transactions")
+    let transactions = []
+    if(res.ok) {
+         transactions = await res.json();
+    }
 
-    const jsonItems = localStorage.getItem("items");
-    let items = jsonItems ? JSON.parse(jsonItems):[];
+    let res1   = await fetch("/api/items")
+    let items = []
+    if(res1.ok) {
+         items = await res1.json();
+    }
 
     function renderHistory() {
 
@@ -17,26 +23,23 @@ document.addEventListener("DOMContentLoaded", () => {
         // to let the last transaction to be appeared in the top
         let transactions2 = transactions.reverse();
         transactions2.forEach((transaction) => {
-            if(user.userId === transaction.userId) {
+            if(user.userId === transaction.buyerId) {
                 container.appendChild(renderTransaction(transaction));
             }
         });
-        // to let the transactions arr return like it was in the first place
-        transactions.reverse();
-        localStorage.setItem("transactions", JSON.stringify(transactions));
     }
 
     
     function renderTransaction(transaction) {
 
-        const itemInStorage = items.find(i => i.itemId == transaction.itemId)
+        const item = items.find(i => i.itemId == transaction.itemId)
 
         const card = document.createElement("div");
         card.classList.add("card");
 
         const itemImg = document.createElement("img");
         itemImg.classList.add("itemImg");
-        itemImg.src = itemInStorage.src; // get img from items storage
+        itemImg.src = item.src; // get img from items storage
 
         const quantityDiv = document.createElement("div");
         quantityDiv.innerHTML = `quantity: <span>${transaction.quantity}</span>`;

@@ -1,5 +1,5 @@
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
  
 const user = localStorage.getItem("currentUser");
@@ -14,8 +14,11 @@ if(currentUser) {
     menu.classList.remove("hide");
 }
 
-const jsonItems = localStorage.getItem("items");
-let items = jsonItems ? JSON.parse(jsonItems):[];
+let res   = await fetch("/api/items")
+let items = []
+if(res.ok) {
+     items = await res.json();
+}
 
 
 const search = document.querySelector("#search");
@@ -39,28 +42,28 @@ document.querySelector("#logout").addEventListener("click", (e) => {
 });
 
 // if there is no items in the local storage we will add 4 items for each item categorie
-if(!items.length) {
-       const a = async () => {
-        fetch("./scripts/items.json")
-        .then((res) => {
-            return res.json();
-        }).then((data) => {
+// if(!items.length) {
+//        const a = async () => {
+//         fetch("./scripts/items.json")
+//         .then((res) => {
+//             return res.json();
+//         }).then((data) => {
         
-            let n = 4;
-            while(n < 12) {
-                items.push(data[n]);
-                n++;
-            }
-            n = 17;
-            while(n <= 20) {
-                items.push(data[n]);
-                n++;
-            }
-            renderItems(); 
-        })    
-    }
-    a();
-}
+//             let n = 4;
+//             while(n < 12) {
+//                 items.push(data[n]);
+//                 n++;
+//             }
+//             n = 17;
+//             while(n <= 20) {
+//                 items.push(data[n]);
+//                 n++;
+//             }
+//             renderItems(); 
+//         })    
+//     }
+//     a();
+// }
 
 
 function renderItems() {
