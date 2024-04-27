@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
      // get the current user and the transactions stored in local storage
-    const user = JSON.parse(localStorage.getItem("currentUser"));
+     let response   = await fetch("/api/currentUser")
+     let user;
+     if(response.ok) {
+         user = await response.json();
+     }
     
     let res   = await fetch("/api/transactions")
     let transactions = []

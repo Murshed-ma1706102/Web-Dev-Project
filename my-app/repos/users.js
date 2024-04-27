@@ -17,13 +17,13 @@ export async function get(id) {
 }
 
 export async function update(data) {
-     
-    return await prisma.buyer.update({
-        where: {
-            userId: data.buyerId
-        },
-        data: {
-            balance: parseInt(data.balance) 
-        }
-    })
+    
+        return await prisma.buyer.update({
+            where: {
+                userId: data.buyerId
+            },
+            data: {
+                balance: parseInt(data.balance) 
+            }
+        })
 }

@@ -15,6 +15,7 @@ model Item {
   src          String
   describtion  String
   sellerId     String
+  choosed      Boolean       @default(false)
   seller       Seller        @relation(fields: [sellerId], references: [userId])
   transactions Transaction[]
 }
@@ -24,6 +25,7 @@ model Seller {
   username     String
   password     String
   type         String
+  login        Boolean       @default(false)
   items        Item[]
   transactions Transaction[]
 }
@@ -34,6 +36,7 @@ model Buyer {
   password     String
   type         String
   balance      Float
+  login        Boolean       @default(false)
   transactions Transaction[]
 }
 

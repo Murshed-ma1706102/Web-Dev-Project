@@ -3,7 +3,12 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
   // reading from localStorage
-  const currentUser= JSON.parse(localStorage.getItem("currentUser"));
+  let response   = await fetch("/api/currentUser")
+  let currentUser;
+  if(response.ok) {
+      currentUser = await response.json();
+  }
+  
   if(!currentUser) {
     window.location.href="index.html";
   }

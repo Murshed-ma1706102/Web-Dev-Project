@@ -1,18 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
   document.getElementById("login-btn").addEventListener("click", () => {sign_in()});
 
-  const storeUserInStorage = (user) => {
-    const currentUser = user;
-    localStorage.setItem("currentUser", currentUser); // Store in local storage to know which user is logged in
-  };
-
+  
   const sign_in = async () => {
     try {
       await fetch("/api/users")
         .then((response) => {
           return response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
           const username = document.getElementById("username").value;
           const password = document.getElementById("password").value;
 
@@ -21,10 +17,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           );
 
           if (user) {
-            storeUserInStorage(JSON.stringify(user));
+            const res2 = await fetch("/api/currentUser", {
+              method: "PUT",
+              body: JSON.stringify({userId: user.userId ,login: true, type: user.type})
+            });
             if (user.type == "seller")
               window.location.href = "seller.html";
-            else 
+            else if(user.type =="customer")
               window.location.href = "mainPage.html";
           } else {
             document.querySelector(".invalid").classList.remove("hide");

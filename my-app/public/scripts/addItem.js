@@ -1,14 +1,17 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     // get the current user and the items stored in local storage
-    const currentUser =  JSON.parse(localStorage.getItem("currentUser"));
-    
-    let res   = await fetch("/api/items")
-    let items = []
-    if(res.ok) {
-         items = await res.json();
+    let response   = await fetch("/api/currentUser")
+    let currentUser;
+    if(response.ok) {
+        currentUser = await response.json();
     }
-
+    
+    let res   = await fetch(`/api/items`)
+    let items = []
+     if(res.ok) {
+          items = await res.json();
+    }
 
     const menu = document.querySelector(".menu");
     const typeDiv = document.querySelector(".menu div");
@@ -41,13 +44,14 @@ document.addEventListener("DOMContentLoaded", async () => {
         container.replaceChildren();
 
         const t = type2=="Shirts" ? "shirt" : type2=="Hoodies" ? "hoodie": "pant";
-        
-        const res = await fetch("./scripts/items.json");
-        let data;
-        if (res.ok) {
-          data = await res.json();
+
+        let res   = await fetch(`/api/items/${t}`)
+        let items = []
+        if(res.ok) {
+             items = await res.json();
         }
-        data.forEach((item) => {
+        
+        items.forEach((item) => {
             if(item.type == t && item.sellerId == currentUser.userId) {
                 container.appendChild(renderItem(item));
             }

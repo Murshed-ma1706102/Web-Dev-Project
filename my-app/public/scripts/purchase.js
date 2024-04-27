@@ -2,8 +2,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
    
    
-
-   const item = JSON.parse(localStorage.getItem("purchasedItem"));
+   let response   = await fetch("/api/purchasedItem")
+   let item;
+   if(response.ok) {
+      item = await response.json();
+   }
 
    const card = document.querySelector(".card");
    
@@ -69,7 +72,11 @@ document.addEventListener("DOMContentLoaded", async () => {
        const address = document.querySelector("#address");
        const quantity = document.querySelector(".quantityDiv span").innerText;
        const errMsg = document.querySelector(".invalid");
-       const user = JSON.parse(localStorage.getItem("currentUser"));
+       let response   = await fetch("/api/currentUser")
+       let user;
+       if(response.ok) {
+           user = await response.json();
+       }
 
        if(address.value === "") {
           document.querySelector(".empty").classList.remove("hide");
@@ -96,23 +103,22 @@ document.addEventListener("DOMContentLoaded", async () => {
                method: "POST",
                  body: JSON.stringify({sellerId: item.sellerId, buyerId: user.userId, itemId: item.itemId, totalPrice: price.innerText, quantity: quantity})
              });
-             if(res.ok) {
-               console.log("ok")
-             }
               
               const res1 = await fetch("/api/items", {
                method: "PUT",
                body: JSON.stringify({itemId: item.itemId ,"quantity": item.quantity})
              });
              
-
              const res2 = await fetch("/api/users", {
                method: "PUT",
                body: JSON.stringify({buyerId: user.userId ,balance: user.balance})
              });
              
-            
-             localStorage.setItem("currentUser", JSON.stringify(user));
+             const res3 = await fetch("/api/purchasedItem", {
+               method: "PUT",
+               body: JSON.stringify({itemId: item.itemId , choosed: false})
+            });
+             
              successMsg();
           }
           else if(user.balance < Number(price.innerText)) {
@@ -150,7 +156,11 @@ document.addEventListener("DOMContentLoaded", async () => {
    }
    
    // if the user click on the logo it will return him to the main page
-   document.querySelector("header div").addEventListener("click", (e) => {
+   document.querySelector("header div").addEventListener("click", async (e) => {
+      const res2 = await fetch("/api/purchasedItem", {
+         method: "PUT",
+         body: JSON.stringify({itemId: item.itemId , choosed: false})
+     });
       window.location.href = "mainPage.html";
     })
 

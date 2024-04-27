@@ -2,8 +2,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
  
-const user = localStorage.getItem("currentUser");
-const currentUser = user ? JSON.parse(user): "";
+    let response   = await fetch("/api/currentUser")
+    let currentUser;
+    if(response.ok) {
+        currentUser = await response.json();
+    }
 // if there is a currentUser in the local storage  we will remove the login btn
 if(currentUser) {
     const loginBtn = document.querySelector(".login");
@@ -36,8 +39,11 @@ search.addEventListener("input", (e) => {
 });
 
 document.querySelector("#history").addEventListener("click", (e) => window.location.href = "history.html");
-document.querySelector("#logout").addEventListener("click", (e) => {
-    localStorage.setItem("currentUser", "");
+document.querySelector("#logout").addEventListener("click", async (e) => {
+    const res2 = await fetch("/api/currentUser", {
+        method: "PUT",
+        body: JSON.stringify({userId: currentUser.userId ,login: false, type: currentUser.type})
+      });
     window.location.reload(true);
 });
 
@@ -86,7 +92,6 @@ function renderItems() {
         }
     });
 
-    localStorage.setItem("items", JSON.stringify(items));
 }
 
 function renderItem(item) {
@@ -143,10 +148,14 @@ function renderItem(item) {
 }
 
 
-function purchase(id) {
+async function purchase(id) {
     const item = items.find((i) => i.itemId === id);
     if(item) {
-        localStorage.setItem("purchasedItem", JSON.stringify(item));
+        const res2 = await fetch("/api/purchasedItem", {
+            method: "PUT",
+            body: JSON.stringify({itemId: item.itemId , choosed: true})
+        });
+        
         window.location.href = "purchase.html";
     }
 }
