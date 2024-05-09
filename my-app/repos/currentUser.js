@@ -9,9 +9,16 @@ export async function get() {
             }
         })
         
-        if(!user) {
+        if(!user) {  
+            user =  await prisma.seller.findFirst({
+                where: {
+                    login: true
+                }
+            })
             
-            return await prisma.seller.findFirst({
+        }
+        if(!user) {  
+            user =  await prisma.admin.findFirst({
                 where: {
                     login: true
                 }
@@ -33,8 +40,17 @@ export async function update(data) {
                login: data.login 
            }
        })
-    }else {
+    }else if(data.type == "seller"){
         return await prisma.seller.update({
+            where: {
+                userId: data.userId
+            },
+           data: {
+               login: data.login 
+           }
+       })
+    }else {
+        return await prisma.admin.update({
             where: {
                 userId: data.userId
             },

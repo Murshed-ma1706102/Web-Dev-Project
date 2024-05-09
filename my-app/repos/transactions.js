@@ -16,7 +16,8 @@ async function seed(transaction) {
           buyerId: transaction.buyerId,
           itemId: transaction.itemId,
           totalPrice: parseFloat(transaction.totalPrice ),
-          quantity: parseInt(transaction.quantity)
+          quantity: parseInt(transaction.quantity),
+          src: transaction.src
       }
   })
 }

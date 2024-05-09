@@ -25,6 +25,8 @@ document.addEventListener("DOMContentLoaded", async () => {
               window.location.href = "seller.html";
             else if(user.type =="customer")
               window.location.href = "mainPage.html";
+            else if(user.type == "admin") 
+              window.location.href = `/`
           } else {
             document.querySelector(".invalid").classList.remove("hide");
           }

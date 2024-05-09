@@ -14,12 +14,6 @@ document.addEventListener("DOMContentLoaded", async () => {
          transactions = await res.json();
     }
 
-    let res1   = await fetch("/api/items")
-    let items = []
-    if(res1.ok) {
-         items = await res1.json();
-    }
-
     function renderHistory() {
 
         const container = document.querySelector(".cards");
@@ -36,14 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     
     function renderTransaction(transaction) {
 
-        const item = items.find(i => i.itemId == transaction.itemId)
-
         const card = document.createElement("div");
         card.classList.add("card");
 
         const itemImg = document.createElement("img");
         itemImg.classList.add("itemImg");
-        itemImg.src = item.src; // get img from items storage
+        itemImg.src = transaction.src; // get img from items storage
 
         const quantityDiv = document.createElement("div");
         quantityDiv.innerHTML = `quantity: <span>${transaction.quantity}</span>`;

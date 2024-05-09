@@ -22,7 +22,7 @@ model Item {
 
 model Seller {
   userId       String        @id @default(cuid())
-  username     String
+  username     String        @unique        
   password     String
   type         String
   login        Boolean       @default(false)
@@ -32,12 +32,19 @@ model Seller {
 
 model Buyer {
   userId       String        @id @default(cuid())
-  username     String
+  username     String        @unique
   password     String
   type         String
   balance      Float
   login        Boolean       @default(false)
   transactions Transaction[]
+}
+model Admin {
+    userId       String        @id @default(cuid())
+    username     String        @unique  
+    password     String
+    type         String
+    login        Boolean       @default(false)
 }
 
 model Transaction {
@@ -47,6 +54,7 @@ model Transaction {
   itemId     String
   totalPrice Float
   quantity   Int 
+  src        String
   item       Item   @relation(fields: [itemId], references: [itemId], onDelete: Cascade)
   buyer      Buyer  @relation(fields: [buyerId], references: [userId], onDelete: Cascade)
   seller     Seller @relation(fields: [sellerId], references: [userId], onDelete: Cascade)

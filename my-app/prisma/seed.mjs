@@ -4,34 +4,44 @@ const prisma = new PrismaClient();
 
 const seed = async () => {
     
-    let data = fs.readFileSync("./public/scripts/users.json", 'utf-8');
-    const users =  JSON.parse(data);
+    // let data = fs.readFileSync("./public/scripts/users.json", 'utf-8');
+    // const users =  JSON.parse(data);
     
-    users.forEach(async (user) => {
-       if(user.type == "customer") {
-          const buyer = await prisma.buyer.create({
-              data: {
-                  userId: String(user.userId),
-                  username: user.username,
-                  password: user.password,
-                  balance: parseFloat(user.balance),
-                  type: user.type
-              }
-          })
-          console.log("buyer")
-       }
-       else if(user.type == "seller") {
-          const seller = await prisma.seller.create({
-              data: {
-                  userId: String(user.userId),
-                  username: user.username,
-                  password: user.password,
-                  type: user.type
-              }
-          })
-          console.log("seller")
-       }
-    })
+    // users.forEach(async (user) => {
+    //    if(user.type == "customer") {
+    //       return await prisma.buyer.create({
+    //           data: {
+    //               userId: String(user.userId),
+    //               username: user.username,
+    //               password: user.password,
+    //               balance: parseFloat(user.balance),
+    //               type: user.type
+    //           }
+    //       })
+          
+    //    }
+    //    else if(user.type == "seller") {
+    //       return await prisma.seller.create({
+    //           data: {
+    //               userId: String(user.userId),
+    //               username: user.username,
+    //               password: user.password,
+    //               type: user.type
+    //           }
+    //       })
+          
+    //    }
+    //    else if(user.type == "admin") {
+    //     return await prisma.admin.create({
+    //         data: {
+    //             userId: String(user.userId),
+    //             username: user.username,
+    //             password: user.password,
+    //             type: user.type
+    //         }
+    //     })
+    //    }
+    // });
   
     let data2 = fs.readFileSync("./public/scripts/items.json", 'utf-8');
     const items =  JSON.parse(data2);

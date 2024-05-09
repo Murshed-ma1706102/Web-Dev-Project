@@ -27,6 +27,12 @@
        "username": "user4",
        "password": "password",
        "type": "seller"
+    },
+    {
+        "userId": 5,
+        "username": "user5",
+        "password": "password",
+        "type": "admin"
     }
 
 ]

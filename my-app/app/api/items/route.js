@@ -1,11 +1,9 @@
 import * as items from "@/repos/items"
 
 export async function GET(request) {
-    // console.log(request)
-    // console.log(request.nextUrl.searchParams);
-
+    
     try {
-        // return new Response("HELLO!");
+        console.log(request.json().itemId)
         return Response.json( await items.get(), {status:200});
     }catch(error){
         console.log(error)

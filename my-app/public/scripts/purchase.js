@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
              
              const res = await fetch("/api/transactions", {
                method: "POST",
-                 body: JSON.stringify({sellerId: item.sellerId, buyerId: user.userId, itemId: item.itemId, totalPrice: price.innerText, quantity: quantity})
+                 body: JSON.stringify({sellerId: item.sellerId, buyerId: user.userId, itemId: item.itemId, totalPrice: price.innerText, quantity: quantity, src: item.src})
              });
               
               const res1 = await fetch("/api/items", {
