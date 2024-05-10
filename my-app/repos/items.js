@@ -19,6 +19,19 @@ export async function get(type) {
     }
 }
 
+export async function add(data) {
+    return await prisma.item.create({
+        data: {
+            sellerId: data.sellerId,
+            type: data.type,
+            src: data.src,
+            describtion: data.describtion,
+            quantity: parseInt(data.quantity),
+            price: parseFloat(data.price)
+        }
+    })
+}
+
 export async function update(data) {
      
     return await prisma.item.update({

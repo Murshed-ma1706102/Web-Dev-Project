@@ -14,6 +14,13 @@ export async function get(id) {
                 userId: id
             }
         })
+        if(!buyer) {
+            return await prisma.seller.findUnique({
+                where: {
+                    userId: id,
+                }
+            })
+        }
         return buyer;
     }
 }

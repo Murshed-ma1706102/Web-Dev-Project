@@ -81,10 +81,12 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.querySelector(".menu").classList.add("hide");
             document.querySelector("section").classList.add("hide");
             document.querySelector(".button").classList.remove("hide");
+            document.querySelector("form").classList.add("hide");
             addItem(item);
         })
         return card;
     }
+
 
     // create the card for the item that the seller shose to add
     function addItem(item) {
@@ -166,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async () => {
        
         document.querySelector(".selected-card").classList.add("hide");
         document.querySelector(".button").classList.add("hide");
-   
+        document.querySelector("form").classList.add("hide");
         const popup = document.querySelector(".popup");
         popup.classList.add("open");
         let img = document.createElement("img");
@@ -181,9 +183,49 @@ document.addEventListener("DOMContentLoaded", async () => {
    
         
         btn.addEventListener("click", (e) => {
-           window.location.reload(true);
+           window.location.href = "seller.html";
         })
       }
+
+      document.querySelector("input[type='submit']").addEventListener("click", async (e) => {
+        e.preventDefault();
+        let type;
+        const radioButtons = document.querySelectorAll('input[name="clothing"]');
+        for (const radioButton of radioButtons) {
+            if (radioButton.checked) {
+                type = radioButton.value;
+                break;
+            }
+        }
+ 
+       try {
+        const src = document.querySelector("#itemImg").value;
+        const describtion = document.querySelector("#describtion").value;
+        const price = parseFloat(document.querySelector("#price").value) ;
+        const quantity = document.querySelector("#quantity").value;
+        if(!src || !describtion || !price || !quantity) {
+            document.querySelector(".invalid").classList.remove("hide");
+        }
+        else if(parseInt(quantity) < 1) {
+            document.querySelector(".invalid").innerHTML = "quantity should be 1 or more"
+            document.querySelector(".invalid").classList.remove("hide");
+        }
+        else {
+            const res1 = await fetch("/api/items", {
+                method: "POST",
+                body: JSON.stringify({"sellerId": currentUser.userId, "type": type, "src": src, "describtion": describtion, "price": price, "quantity":quantity})
+            });
+            if(res1.ok) {
+                successMsg();
+             }
+        }
+       }catch(e) {
+          
+       }
+       document.querySelector(".invalid").innerHTML = "wrong value provided or a missing field!!";
+       document.querySelector(".invalid").classList.remove("hide");
+
+      })
 
 
     

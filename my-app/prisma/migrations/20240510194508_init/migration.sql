@@ -2,7 +2,7 @@
 CREATE TABLE "Item" (
     "itemId" TEXT NOT NULL PRIMARY KEY,
     "type" TEXT NOT NULL,
-    "price" INTEGER NOT NULL,
+    "price" REAL NOT NULL,
     "quantity" INTEGER NOT NULL,
     "src" TEXT NOT NULL,
     "describtion" TEXT NOT NULL,

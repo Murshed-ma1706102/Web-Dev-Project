@@ -17,7 +17,7 @@ export default function Home() {
           if(data) {
             setUser(data)
           }else {
-            window.location.href = "index.html"
+            window.location.href = "mainpage.html"
           }
         });
       fetch("/api/analytics")

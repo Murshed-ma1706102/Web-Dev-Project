@@ -3,36 +3,117 @@
         "userId": 1,
         "username": "user1",
         "password": "password",
-        "type": "customer",
-        "balance": 500
+        "type": "admin"
         
     },
     {
-       "userId": 2,
-       "username": "user2",
-       "password": "password",
-       "type": "seller"
-    }
-,
+        "userId": 2,
+        "username": "user2",
+        "password": "password",
+        "type": "customer",
+        "balance": 800
+        
+    },
     {
         "userId": 3,
         "username": "user3",
+        "password": "password",
+        "type": "customer",
+        "balance": 900
+        
+    },
+    {
+        "userId": 4,
+        "username": "user4",
         "password": "password",
         "type": "customer",
         "balance": 700
         
     },
     {
-       "userId": 4,
-       "username": "user4",
+        "userId": 5,
+        "username": "user5",
+        "password": "password",
+        "type": "customer",
+        "balance": 500
+        
+    },
+    {
+        "userId": 6,
+        "username": "user6",
+        "password": "password",
+        "type": "customer",
+        "balance": 600
+        
+    },
+    {
+        "userId": 7,
+        "username": "user7",
+        "password": "password",
+        "type": "customer",
+        "balance": 300
+        
+    },
+    {
+        "userId": 8,
+        "username": "user8",
+        "password": "password",
+        "type": "customer",
+        "balance": 800
+        
+    },
+    {
+        "userId": 9,
+        "username": "user",
+        "password": "password",
+        "type": "customer",
+        "balance": 100
+        
+    },
+    {
+        "userId": 10,
+        "username": "user10",
+        "password": "password",
+        "type": "customer",
+        "balance": 500
+        
+    },
+
+    {
+       "userId": 11,
+       "username": "user11",
        "password": "password",
        "type": "seller"
     },
     {
-        "userId": 5,
-        "username": "user5",
+        "userId": 12,
+        "username": "user12",
         "password": "password",
-        "type": "admin"
-    }
+        "type": "seller"
+     },
+     {
+        "userId": 13,
+        "username": "user13",
+        "password": "password",
+        "type": "seller"
+     },
+     {
+        "userId": 14,
+        "username": "user14",
+        "password": "password",
+        "type": "seller"
+     },
+     {
+        "userId": 15,
+        "username": "user15",
+        "password": "password",
+        "type": "seller"
+     },
+     {
+        "userId": 16,
+        "username": "user16",
+        "password": "password",
+        "type": "seller"
+     }
 
 ]

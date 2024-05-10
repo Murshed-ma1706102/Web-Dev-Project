@@ -10,7 +10,7 @@ datasource db {
 model Item {
   itemId       String        @id @default(cuid())
   type         String
-  price        Int
+  price        Float
   quantity     Int
   src          String
   describtion  String

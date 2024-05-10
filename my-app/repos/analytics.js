@@ -38,4 +38,34 @@ export async function bestSeller() {
     })
 }
 
+export async function top3Buyers() {
+    return await prisma.transaction.groupBy({
+        by:["buyerId"],
+        _sum: {
+            totalPrice: true,
+        },
+        orderBy: {
+            _sum: {
+                totalPrice: "desc",
+            }
+        },
+        take: 3,
+    })
+}
+
+export async function top3Sellers() {
+    return await prisma.transaction.groupBy({
+        by:["sellerId"],
+        _sum: {
+            quantity: true,
+        },
+        orderBy: {
+            _sum: {
+                quantity: "desc",
+            }
+        },
+        take: 3,
+    })
+}
+
 

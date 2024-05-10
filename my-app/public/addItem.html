@@ -22,7 +22,7 @@
     </header>
     <div class="menu">
         <div>
-            <span>Select Item Type</span>
+            <span>add a current item</span>
             <img src="media/icons/chevron-down.svg" alt="">
         </div>
         <ul class="options">
@@ -48,6 +48,38 @@
     <div class="button hide">
         <button id="add-item">Add Item</button>
     </div>
+    <form>
+        <fieldset>
+            <legend><strong>Add New Item</strong></legend>
+            <h3>shoose item type: </h3>
+            <label>
+                <input type="radio" name="clothing" value="shirt" checked>
+                Shirt
+            </label>
+            <label>
+                <input type="radio" name="clothing" value="hoodie">
+                Hoodie
+            </label>
+            <label>
+                <input type="radio" name="clothing" value="pant">
+                Pant
+            </label>
+            <label for="itemImg">Item Image URL:</label>
+        <input type="text" id="itemImg" name="itemImg" required>
+
+        <label for="describtion">Describtion:</label>
+        <input type="text" id="describtion" name="describtion" required>
+        <br>
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required>
+        <br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" min="1" required>
+        <br>
+        <p class="invalid hide"></p>
+        <input type="submit" value="Submit">
+        </fieldset>
+    </form>
     <script src='scripts/addItem.js'></script>
 </body>
 </html>

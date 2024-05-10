@@ -11,6 +11,19 @@ export async function GET(request) {
     }
 }
 
+export async function POST(request) {
+
+    
+    try {
+        const data = await request.json();
+        const item =  await items.add(data);
+        return Response.json(data, {status: 201});
+    }catch(error) {
+        console.error(error);
+        return Response.json({message: "Internal error"}, {status: 500});
+    }
+}
+
 export async function PUT(request) {
     
     try {

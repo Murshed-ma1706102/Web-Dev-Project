@@ -2,7 +2,7 @@
     "itemId": 1, 
     "type": "shirt",
     "price": 30,
-    "sellerId": 2,
+    "sellerId": 11,
     "quantity": 10,
     "src": "./media/imgs/shirts/shirt-1.avif",
     "describtion": "black t-shirt"
@@ -12,7 +12,7 @@
     "itemId": 2, 
     "type": "shirt",
     "price": 50,
-    "sellerId": 4,
+    "sellerId": 12,
     "quantity": 10,
     "src": "./media/imgs/shirts/white-shirt.avif",
     "describtion": "white t-shirt"
@@ -21,7 +21,7 @@
     "itemId": 3, 
     "type": "shirt",
     "price": 40,
-    "sellerId": 2,
+    "sellerId": 13,
     "quantity": 10,
     "src": "./media/imgs/shirts/shirt-3.avif",
     "describtion": "black t-shirt with writing"
@@ -30,7 +30,7 @@
     "itemId": 4, 
     "type": "shirt",
     "price": 40,
-    "sellerId": 4,
+    "sellerId": 14,
     "quantity": 10,
     "src": "https://freepngimg.com/thumb/categories/579.png",
     "describtion": "Black t-shirt"
@@ -39,7 +39,7 @@
     "itemId": 5, 
     "type": "shirt",
     "price": 45,
-    "sellerId": 2,
+    "sellerId": 15,
     "quantity": 10,
     "src": "./media/imgs/shirts/brown tshirt.jpeg",
     "describtion": "Brown t-shirt"
@@ -48,7 +48,7 @@
     "itemId": 6, 
     "type": "shirt",
     "price": 55,
-    "sellerId": 4,
+    "sellerId": 16,
     "quantity": 10,
     "src": "./media/imgs/shirts/blue-tshirt.jpeg",
     "describtion": "Blue t-shirt"
@@ -57,7 +57,7 @@
     "itemId": 7, 
     "type": "shirt",
     "price": 50,
-    "sellerId": 2,
+    "sellerId": 11,
     "quantity": 10,
     "src": "./media/imgs/shirts/green-tshirt.jpeg",
     "describtion": "Green t_shirt"
@@ -66,7 +66,7 @@
     "itemId": 8, 
     "type": "shirt",
     "price": 45,
-    "sellerId": 4,
+    "sellerId": 12,
     "quantity": 10,
     "src": "./media/imgs/shirts/grey-tshirt.jpeg",
     "describtion": "Grey t-shirt"
@@ -75,7 +75,7 @@
     "itemId": 9, 
     "type": "pant",
     "price": 65,
-    "sellerId": 2,
+    "sellerId": 13,
     "quantity": 10,
     "src": "./media/imgs/pants/jeans.jpg",
     "describtion": "Classic jeans"
@@ -84,7 +84,7 @@
     "itemId": 10, 
     "type": "pant",
     "price": 70,
-    "sellerId": 4,
+    "sellerId": 14,
     "quantity": 10,
     "src": "./media/imgs/pants/black.jpg",
     "describtion": "Black trouser"
@@ -93,7 +93,7 @@
     "itemId": 11, 
     "type": "pant",
     "price": 55,
-    "sellerId": 2,
+    "sellerId": 15,
     "quantity": 10,
     "src": "./media/imgs/pants/grey.jpg",
     "describtion": "Grey trouser"
@@ -102,7 +102,7 @@
     "itemId": 12, 
     "type": "pant",
     "price": 65,
-    "sellerId": 4,
+    "sellerId": 16,
     "quantity": 10,
     "src": "./media/imgs/pants/beige-pant.jpeg",
     "describtion": "Beige trouser"
@@ -111,7 +111,7 @@
     "itemId": 13, 
     "type": "pant",
     "price": 60,
-    "sellerId": 2,
+    "sellerId": 11,
     "quantity": 10,
     "src": "./media/imgs/pants/brown-pant.jpeg",
     "describtion": "Brown trouser"
@@ -120,7 +120,7 @@
     "itemId": 14, 
     "type": "pant",
     "price": 70,
-    "sellerId": 2,
+    "sellerId": 12,
     "quantity": 10,
     "src": "./media/imgs/pants/green-pant.avif",
     "describtion": "Green trouser"
@@ -129,7 +129,7 @@
     "itemId": 15, 
     "type": "pant",
     "price": 45,
-    "sellerId": 4,
+    "sellerId": 13,
     "quantity": 10,
     "src": "./media/imgs/pants/white-pant.jpeg",
     "describtion": "White trouser"
@@ -138,7 +138,7 @@
     "itemId": 16, 
     "type": "pant",
     "price": 55,
-    "sellerId": 4,
+    "sellerId": 14,
     "quantity": 10,
     "src": "./media/imgs/pants/blue-pant.webp",
     "describtion": "Blue trouser"
@@ -147,7 +147,7 @@
     "itemId": 17, 
     "type": "hoodie",
     "price": 80,
-    "sellerId": 4,
+    "sellerId": 15,
     "quantity": 10,
     "src": "./media/imgs/hoodies/blue-hoodie.jpeg",
     "describtion": "Blue hoodie"
@@ -156,7 +156,7 @@
     "itemId": 18, 
     "type": "hoodie",
     "price": 75,
-    "sellerId": 4,
+    "sellerId": 16,
     "quantity": 10,
     "src": "./media/imgs/hoodies/blak-hoodie.jpg",
     "describtion": "Black hoodie"
@@ -165,7 +165,7 @@
     "itemId": 19, 
     "type": "hoodie",
     "price": 70,
-    "sellerId": 4,
+    "sellerId": 11,
     "quantity": 10,
     "src": "./media/imgs/hoodies/white-hoodie.jpeg",
     "describtion": "White hoodie"
@@ -174,7 +174,7 @@
     "itemId": 20, 
     "type": "hoodie",
     "price": 80,
-    "sellerId": 4,
+    "sellerId": 12,
     "quantity": 10,
     "src": "./media/imgs/hoodies/beige-hoodie.webp",
     "describtion": "Beige hoodie"
@@ -183,7 +183,7 @@
     "itemId": 21, 
     "type": "hoodie",
     "price": 65,
-    "sellerId": 4,
+    "sellerId": 13,
     "quantity": 10,
     "src": "./media/imgs/hoodies/brown-hoodie.webp",
     "describtion": "Brown hoodie"
@@ -192,7 +192,7 @@
     "itemId": 22, 
     "type": "hoodie",
     "price": 75,
-    "sellerId": 2,
+    "sellerId": 14,
     "quantity": 10,
     "src": "./media/imgs/hoodies/green-hoodie.jpg",
     "describtion": "Green hoodie"
@@ -201,7 +201,7 @@
     "itemId": 23, 
     "type": "hoodie",
     "price": 85,
-    "sellerId": 2,
+    "sellerId": 15,
     "quantity": 10,
     "src": "./media/imgs/hoodies",
     "describtion": "Red hoodie"
@@ -210,7 +210,7 @@
     "itemId": 24, 
     "type": "hoodie",
     "price": 65,
-    "sellerId": 2,
+    "sellerId": 16,
     "quantity": 10,
     "src": "./media/imgs/hoodies/pink-hoodie.jpeg",
     "describtion": "Pink hoodie"
