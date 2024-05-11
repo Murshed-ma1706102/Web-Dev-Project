@@ -3,7 +3,7 @@ import prisma from "@/repos/prisma"
 async function read() {
     return await prisma.item.findMany();
 }
-
+  111
 export async function get(type) {
     if(!type) {
         const items = await read();
