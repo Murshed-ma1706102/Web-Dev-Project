@@ -1,8 +1,6 @@
 "use client";
-import buyerCard from "@/components/buyerCard";
-import BuyerCard from "@/components/buyerCard";
 import { LucideShoppingCart, LucideDollarSign } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+
 export default function Stats(analytics) {
     
     let totalUsers;
